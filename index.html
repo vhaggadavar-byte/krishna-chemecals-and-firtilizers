@@ -1,0 +1,188 @@
+# krishna-chemecals-and-firtilizers
+firtilizers in dealers 
+<!DOCTYPE html>
+<html lang="kn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krishna Chemicals & Fertilizers</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 20px; }
+        .container { max-width: 1200px; margin: auto; }
+        .product-grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+        .product-card { background: white; border-radius: 10px; padding: 15px; width: 280px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); text-align: center; }
+        .product-card img { width: 100%; height: 250px; object-fit: contain; border-radius: 5px; }
+        
+        /* Modal Style (Order Form) */
+        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); }
+        .modal-content { background: white; margin: 10% auto; padding: 25px; border-radius: 10px; width: 90%; max-width: 400px; position: relative; }
+        .modal-content input { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
+        .btn-submit { background: #2e7d32; color: white; border: none; width: 100%; padding: 12px; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        .close { position: absolute; right: 15px; top: 10px; font-size: 24px; cursor: pointer; }
+
+        .whatsapp-link { display: block; margin-top: 10px; color: #128c7e; text-decoration: none; font-weight: bold; font-size: 0.9em; }
+        .contact-section { margin-top: 50px; text-align: center; padding: 20px; background: white; border-radius: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1 style="text-align:center; color: #2e7d32;">Krishna Chemicals & Fertilizers</h1>
+    
+    <div class="product-grid">
+        <div class="product-card">
+            <img src="images/jeevamrut.jpg" alt="Jeevamrut">
+            <h3>Jeevamrut (15 KG)</h3>
+            <p>Wholesale: ₹900</p>
+            <button class="btn-submit" onclick="openModal('Jeevamrut')">Order Now</button>
+            <a href="https://wa.me/916366034671" class="whatsapp-link" target="_blank">Order on WhatsApp</a>
+        </div>
+
+        <div class="product-card">
+            <img src="images/20_05_20.jpg" alt="20:05:20">
+            <h3>20:05:20 (800/-)</h3>
+            <button class="btn-submit" onclick="openModal('20:05:20')">Order Now</button>
+            <a href="https://wa.me/916366034671" class="whatsapp-link" target="_blank">Order on WhatsApp</a>
+        </div>
+        </div>
+
+    <div class="contact-section">
+        <h3>ನಮಗೆ ಮೆಸೇಜ್ ಮಾಡಿ (Message Us)</h3>
+        <button class="btn-submit" style="width: 200px;" onclick="openModal('General Inquiry')">Send Message</button>
+    </div>
+</div>
+
+<div id="orderModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h3 id="productTitle">Order Product</h3>
+        <input type="text" id="custName" placeholder="Nimma Hesaru (Name)" required>
+        <input type="tel" id="custPhone" placeholder="Mobile Number" required>
+        <input type="number" id="orderQty" placeholder="Estu beku? (Quantity)" required>
+        <button class="btn-submit" onclick="submitToWhatsApp()">Submit Order</button>
+    </div>
+</div>
+
+<script>
+    let currentProduct = "";
+
+    function openModal(product) {
+        currentProduct = product;
+        document.getElementById('productTitle').innerText = "Order: " + product;
+        document.getElementById('orderModal').style.display = "block";
+    }
+
+    function closeModal() {
+        document.getElementById('orderModal').style.display = "none";
+    }
+
+    function submitToWhatsApp() {
+        const name = document.getElementById('custName').value;
+        const phone = document.getElementById('custPhone').value;
+        const qty = document.getElementById('orderQty').value;
+        const myNumber = "916366034671";
+
+        if(name && phone && qty) {
+            const message = Namaste, Order Details:%0AProduct: ${currentProduct}%0AName: ${name}%0APhone: ${phone}%0AQuantity: ${qty};
+            window.open(https://wa.me/${myNumber}?text=${message}, '_blank');
+            closeModal();
+        } else {
+            alert("Ellaa mahitiyannu tumbaadi (Please fill all fields)");
+        }
+    }
+
+    window.onclick = function(event) {
+        if (event.target == document.getElementById('orderModal')) {
+            closeModal();
+        }
+    }
+</script>
+
+</body>
+</html> 
+<!DOCTYPE html>
+<html lang="kn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krishna Chemicals and Fertilizers</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: #f4f7f6; color: #333; }
+        header { background-color: #2e7d32; color: white; padding: 40px 20px; text-align: center; }
+        header h1 { font-size: 2.5rem; margin-bottom: 10px; }
+        .container { max-width: 1100px; margin: 30px auto; padding: 20px; }
+        
+        /* Products Grid */
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 20px; }
+        .product-card { background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-align: center; border-top: 4px solid #2e7d32; }
+        .product-card img { width: 100%; height: 200px; object-fit: cover; background-color: #ddd; }
+        .product-details { padding: 20px; }
+        .product-details h3 { color: #1b5e20; margin-bottom: 10px; font-size: 1.3rem; }
+        .product-details p { color: #666; font-size: 0.95rem; line-height: 1.4; }
+
+        .contact-info { background: #e8f5e9; padding: 30px; border-radius: 8px; text-align: center; margin-top: 40px; border: 1px solid #c8e6c9; }
+        .btn-call { display: inline-block; background-color: #2e7d32; color: white; padding: 12px 25px; text-decoration: none; border-radius: 5px; margin-top: 15px; font-weight: bold; }
+        footer { text-align: center; padding: 20px; color: #666; margin-top: 40px; border-top: 1px solid #ddd; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Krishna Chemicals and Fertilizers</h1>
+        <p>ಉತ್ತಮ ಇಳುವರಿಗಾಗಿ ಗುಣಮಟ್ಟದ ಕೃಷಿ ಪರಿಕರಗಳು ಮತ್ತು ನಂಬಿಕಸ್ಥ ಕೇಂದ್ರ</p>
+    </header>
+
+    <div class="container">
+        
+        <h2 style="color: #2e7d32; border-bottom: 2px solid #2e7d32; padding-bottom: 10px;">ನಮ್ಮ ಉತ್ಪನ್ನಗಳು (Our Products)</h2>
+        
+        <div class="products-grid">
+            
+            <!-- 1. ರಸಗೊಬ್ಬರಗಳು -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1592417817098-8f3d6eb19675?w=500" alt="Fertilizers">
+                <div class="product-details">
+                    <h3>ರಸಗೊಬ್ಬರಗಳು (Fertilizers)</h3>
+                    <p>ಭೂಮಿಯ ಫಲವತ್ತತೆ ಹೆಚ್ಚಿಸುವ ಮತ್ತು ಬೆಳೆಗಳಿಗೆ ಉತ್ತಮ ಪೋಷಕಾಂಶ ನೀಡುವ ಯೂರಿಯಾ, ಡಿ.ಎ.ಪಿ ಮತ್ತು ಇತರೆ ಪ್ರಮುಖ ಗೊಬ್ಬರಗಳು ಲಭ್ಯ ಪ್ರಮುಖ ಕಂಪನಿಗಳಿಂದ.</p>
+                </div>
+            </div>
+
+            <!-- 2. ಕೀಟನಾಶಕಗಳು -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1628155930542-3c7a64e2c833?w=500" alt="Chemicals">
+                <div class="product-details">
+                    <h3>ಕೀಟನಾಶಕಗಳು (Chemicals)</h3>
+                    <p>ಬೆಳೆಗಳನ್ನು ವಿವಿಧ ರೋಗ-ರುಜಿನಗಳಿಂದ, ಕೀಟಗಳಿಂದ ಮತ್ತು ಕಳೆಗಳಿಂದ ಮುಕ್ತಗೊಳಿಸಿ ರಕ್ಷಿಸುವ ಸುರಕ್ಷಿತ ಹಾಗೂ ಗುಣಮಟ್ಟದ ಔಷಧಿಗಳು.</p>
+                </div>
+            </div>
+
+            <!-- 3. ಬಿತ್ತನೆ ಬೀಜಗಳು -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1530595467537-0b5996c41f2d?w=500" alt="Seeds">
+                <div class="product-details">
+                    <h3>ಉತ್ತಮ ಬಿತ್ತನೆ ಬೀಜಗಳು</h3>
+                    <p>ಹೆಚ್ಚಿನ ಇಳುವರಿ ನೀಡುವ ಪ್ರಮುಖ ಕಂಪನಿಗಳ ಪ್ರಮಾಣೀಕೃತ ಮೆಕ್ಕೆಜೋಳ, ಹತ್ತಿ, ತರಕಾರಿ ಮತ್ತು ಇತರೆ ಸುಧಾರಿತ ಬಿತ್ತನೆ ಬೀಜಗಳು.</p>
+                </div>
+            </div>
+
+            <!-- 4. ಹೊಸದಾಗಿ ಆಡ್ ಮಾಡಲಾದ ಪ್ರಾಡಕ್ಟ್: ಕೃಷಿ ಉಪಕರಣಗಳು -->
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1589923188900-85dae523342b?w=500" alt="Tools">
+                <div class="product-details">
+                    <h3>ಕೃಷಿ ಉಪಕರಣಗಳು & ಪೈಪ್ಸ್</h3>
+                    <p>ಔಷಧ ಸಿಂಪಡಿಸುವ ಸ್ಪ್ರೇಯರ್ ಮೆಷಿನ್‌ಗಳು, ಉತ್ತಮ ಗುಣಮಟ್ಟದ ಡ್ರಿಪ್ ಪೈಪ್‌ಗಳು ಹಾಗೂ ರೈತರಿಗೆ ದಿನನಿತ್ಯ ಬೇಕಾಗುವ ಪರಿಕರಗಳು.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ಸಂಪರ್ಕ ಮಾಹಿತಿ -->
+        <section class="contact-info">
+            <h2>ಸಂಪರ್ಕಿಸಿ (Contact Us)</h2>
+            <p style="margin-top: 10px;"><strong>ವಿಳಾಸ:</strong> [ನಿಮ್ಮ ಅಂಗಡಿಯ ಅಡ್ರೆಸ್ ಅನ್ನು ಇಲ್ಲಿ ಬರೆಯಿರಿ]</p>
+            <p><strong>ಮೊಬೈಲ್ ಸಂಖ್ಯೆ:</strong> +91 XXXXXXXXXX</p>
+            <a href="tel:+91XXXXXXXXXX" class="btn-call">📞 ಕರೆ ಮಾಡಲು ಇಲ್ಲಿ ಕ್ಲಿಕ್ ಮಾಡಿ</a>
+        </section>
+
+    </div>
